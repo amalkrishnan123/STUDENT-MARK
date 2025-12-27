@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<div class='container'>
+    <div>
+        <form method='get'>
+            <h1>FILTER BY CLASS</h1>
+            <select name='class'>
+                <option value=''>All</option>
+                <option value='5'>5</option>
+                <option value='6'>6</option>
+                <option value='7'>7</option>
+            </select>
+            <h1>FILTER BY DIVISION</h1>
+            <select name='division'>
+                <option value=''>All</option>
+                <option value='A'>A</option>
+                <option value='B'>B</option>
+                <option value='C'>C</option>
+            </select>
+            <button type='submit'>Filter</button>
+            
+        </form>
+
+    <table class='table table-bordered'>
+        <thead>
+            <tr>
+                <td><b>Student Name</b> </td>
+                <td><b>Roll Number</b></td>
+                <td><b>Class</b></td>
+                <td><b>Division</b></td>
+                <td><b>Total Marks</b></td>
+                <td><b>Average Marks</b></td>
+                <td><b>Grade</b> </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in marks %}
+            <tr>
+                <td>{{i.student.name}}</td>
+                <td>{{i.student.roll_number}}</td>
+                <td>{{i.student.class_name}}</td>
+                <td>{{i.student.division}}</td>
+                <td>{{i.total}}</td>
+                <td>{{i.avg}}</td>
+                {% if i.avg >= 75 %}
+                <td>A</td>
+                {% elif i.avg >= 60 and i.avg < 75 %}
+                <td>B</td>
+                {% elif i.avg >= 40 and i.avg < 60 %}
+                <td>C</td>
+                {% else %}
+                <td>Fail</td>
+                {% endif %}
+                <td>{{i.grade}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock content %}
