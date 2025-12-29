@@ -34,27 +34,18 @@
             </tr>
         </thead>
         <tbody>
-            {% for i in marks %}
-            <tr>
-                <td>{{i.student.name}}</td>
-                <td>{{i.student.roll_number}}</td>
-                <td>{{i.student.class_name}}</td>
-                <td>{{i.student.division}}</td>
-                <td>{{i.total}}</td>
-                <td>{{i.avg}}</td>
-                {% if i.avg >= 75 %}
-                <td>A</td>
-                {% elif i.avg >= 60 and i.avg < 75 %}
-                <td>B</td>
-                {% elif i.avg >= 40 and i.avg < 60 %}
-                <td>C</td>
-                {% else %}
-                <td>Fail</td>
-                {% endif %}
-                <td>{{i.grade}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
+{% for i in marks  %}
+<tr>
+    <td>{{ i.name }}</td>
+    <td>{{ i.roll_no }}</td>
+    <td>{{ i.class}}</td>
+    <td>{{ i.division }}</td>
+    <td>{{ i.total }}</td>
+    <td>{{ i.average|floatformat:2 }}</td>
+    <td>{{ i.grade }}</td>
+</tr>
+{% endfor %}  
+</tbody>
     </table>
 
 
